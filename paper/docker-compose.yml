@@ -1,0 +1,16 @@
+services:
+  minecraft-server:
+    build: .
+    container_name: minecraft-server
+    ports:
+      - "25565:25565"
+      - "8123:8123"   # For dynmap
+    volumes:
+      - ./data:/opt/paper # Mounts the data directory to persist world data and configs
+    restart: unless-stopped
+    stdin_open: true  # Allow for interactive inputs (optional)
+    tty: true  # Allocate a pseudo-TTY (optional)
+
+volumes:
+  data:
+
